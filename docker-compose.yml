@@ -1,0 +1,36 @@
+version: "3.7"
+services:
+  mysql-db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: monitor_price
+      MYSQL_USER: monitor_price
+      MYSQL_PASSWORD: monitor_price
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  backend:
+    build: ./backend
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql-db
+
+  client:
+    build: ./client
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+
+volumes:
+  mysql_data:

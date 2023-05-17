@@ -17,7 +17,7 @@ class DevConfig(Config):
 
 
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://monitor_price:monitor_price@localhost/monitor_price"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://monitor_price:monitor_price@mysql-db/monitor_price"
     DEBUG = False
 
 
