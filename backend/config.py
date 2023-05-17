@@ -17,7 +17,8 @@ class DevConfig(Config):
 
 
 class ProdConfig(Config):
-    pass
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://monitor_price:monitor_price@localhost/monitor_price"
+    DEBUG = False
 
 
 class TestConfig(Config):
